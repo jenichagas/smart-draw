@@ -11,9 +11,6 @@ templates = Jinja2Templates(directory="templates")
 router.get("", response_class=HTMLResponse)
 async def smartdraw_home(request: Request):
     participants = load_participants()
-    return templates.TemplateResponse("smartdraw.html", {"request":request, "participants": participants})
-
-
-
-
-
+    return templates.TemplateResponse(
+        "smartdraw.html", {"request": request, "participants": participants}
+    )
