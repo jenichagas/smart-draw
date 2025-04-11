@@ -1,0 +1,16 @@
+{% if participants and participants|length > 0 %}
+<ul>
+    {% for name in participants %}
+    <div class="list-names" id="list" x-transition>
+        <span>{{ name }}</span>
+        <button
+            hx-delete="/smartdraw/remove/{{ name | urlencode }}"
+            hx-target="#name-list"
+            class="remove-btn"
+        >
+            ✖
+        </button>
+    </div>
+    {% endfor %}
+</ul>
+{% endif %}

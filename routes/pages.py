@@ -8,9 +8,9 @@ router = APIRouter()
 
 templates = Jinja2Templates(directory="templates")
 
-router.get("", response_class=HTMLResponse)
+@router.get("/", response_class=HTMLResponse)
 async def smartdraw_home(request: Request):
     participants = load_participants()
     return templates.TemplateResponse(
-        "smartdraw.html", {"request": request, "participants": participants}
+        "app/smartdraw.html", {"request": request, "participants": []}
     )

@@ -1,33 +1,7 @@
 {% extends "base.html" %} {% block content %}
 
-<div x-data="smartDraw" class="container">
-    <h1>Bem vindo ao Smart Draw</h1>
-
-    <form
-        hx-post="/smartdraw/add"
-        hx-trigger="submit"
-        hx-swap="none"
-        class="form"
-    >
-        <input type="text" name="name" placeholder="Digite um nome" required />
-        <button type="submit">Adicionar</button>
-    </form>
-
-    <div class="list">{% include "partials/list.jinja" %}</div>
-
-    <div class="actions">
-        <button type="button" @click="draw">Sortear</button>
-
-        <form action="/smartdraw/clear" method="post">
-            <button type="submit">Limpar lista</button>
-        </form>
-    </div>
-
-    <div id="result-box" x-show="!isDrawing" x-transition></div>
-
-    <div x-show="isDrawing" x-transition>
-        <p>Sorteando...</p>
-    </div>
+<div x-data="smartDraw({{ participants }})" class="background-draw flex" id="background">
+    {%include "partials/draw.html" %}
 </div>
 
 {% endblock %}
